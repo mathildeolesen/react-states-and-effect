@@ -14,6 +14,7 @@ function App() {
 
   const [content, setContent] = useState([])
   const [query, setQuery] = useState("beth")
+  const [currentID, setCurrentId] = useState(null)
 
   const getData = async() => {
     try{
@@ -31,15 +32,15 @@ function App() {
     getData()
   }, [query])
 
-  console.log("Query: ", query)
+  console.log(currentID)
 
   return (
     <Layout>
       <Routes>
         <Route index element={<Home content={content}/>}/>
         <Route path="characters/*" element={<Categories/>}>
-          <Route index element={<CategoriesIndex content={content} setQuery={setQuery}/>}/>
-          <Route path=":slug" element={<Category posts={posts} />}/>
+          <Route index element={<CategoriesIndex content={content} setQuery={setQuery} setCurrentId={setCurrentId}/>}/>
+          <Route path=":slug" element={<Category posts={posts} currentID={currentID}/>}/>
           <Route path=":slug/:postid" element={<PostPage posts={posts} />}/>
         </Route>
       </Routes>
