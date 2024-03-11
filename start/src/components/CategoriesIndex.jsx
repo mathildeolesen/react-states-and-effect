@@ -16,7 +16,7 @@ export default function CategoriesIndex({content, setQuery, setCurrentId}) {
 
     const handleClick = (id) => {
         setCurrentId(id)
-
+        localStorage.setItem("karakterID", id)
     }
 
     console.log("Search: ", search)
